@@ -1,14 +1,15 @@
 import { Routes } from '@angular/router';
-import { InicioComponent } from './inicio/inicio.component';
-import { LoginComponent } from './login/login.component';
-import { ClienteComponent } from './cliente/cliente.component';
-import { AdministradorComponent } from './administrador/administrador.component';
-
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { MesasComponent } from './mesas/mesas.component';
+import { ClientesComponent } from './clientes/clientes.component';
+import { ReportesComponent } from './reportes/reportes.component';
+import { ConfiguracionComponent } from './configuracion/configuracion.component';
 
 export const routes: Routes = [
-  { path: '', redirectTo: '/inicio', pathMatch: 'full' },
-  { path: 'inicio', component: InicioComponent },
-  { path: 'Login', component: LoginComponent },
-  { path: 'cliente', component: ClienteComponent },
-  { path: 'administrador', component: AdministradorComponent },
+    { path: '', component: DashboardComponent },
+    { path: 'mesas', component: MesasComponent },
+    { path: 'clientes', component: ClientesComponent },
+    { path: 'reportes', component: ReportesComponent },
+    { path: 'configuracion', component: ConfiguracionComponent },
+    { path: '**', redirectTo: '', pathMatch: 'full' }
 ];

@@ -1,96 +1,145 @@
-<div id="admin-page" class="page">
-    <div class="admin-panel">
-        <aside class="sidebar">
-            <div class="logo">Reserva de Restaurante</div>
-            <nav class="main-nav">
-                <ul>
-                    <!-- Usando routerLink para la navegación -->
-                    <li><a [routerLink]="['/inicio']" class="nav-item">Dashboard</a></li>
-                    <li><a [routerLink]="['/reservas']" class="nav-item">Reservas</a></li>
-                    <li><a [routerLink]="['/mesas']" class="nav-item">Mesas</a></li>
-                    <li><a [routerLink]="['/clientes']" class="nav-item">Clientes</a></li>
-                    <li><a [routerLink]="['/reportes']" class="nav-item">Reportes</a></li>
-                    <li><a [routerLink]="['/configuracion']" class="nav-item">Configuración</a></li>
-                </ul>
-            </nav>
-            <button class="logout-btn-admin" [routerLink]="['/login']">Cerrar sesion</button>
-        </aside>
-        <main class="main-content-admin">
-            <h1 class="page-title">Panel de Administración</h1>
-            <section class="stats-cards">
-                <div class="stat-card blue">
-                    <h3>RESERVAS DE HOY</h3>
-                    <p>20</p>
-                </div>
-                <div class="stat-card green">
-                    <h3>MESAS DISPONIBLES</h3>
-                    <p>15/30</p>
-                </div>
-                <div class="stat-card orange">
-                    <h3>RESERVAS PENDIENTES</h3>
-                    <p>6</p>
-                </div>
-                <div class="stat-card light-blue">
-                    <h3>OCUPACIÓN</h3>
-                    <p>50%</p>
-                </div>
-            </section>
-            <section class="dashboard-sections-admin">
-                <div class="section-box reservations-table">
-                    <h2>Gestión de Reservas</h2>
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>Hora</th>
-                                <th>Cliente</th>
-                                <th>Mesa</th>
-                                <th>Personas</th>
-                                <th>Estado</th>
-                                <th>Acciones</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>5:00</td>
-                                <td>Martín González</td>
-                                <td>Mesa 3</td>
-                                <td>4</td>
-                                <td><span class="status-confirmed">Confirmada</span></td>
-                                <td>
-                                    <button class="action-btn edit-btn">Editar</button>
-                                    <button class="action-btn cancel-btn">Cancelar</button>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-                <div class="section-box table-status-container">
-                    <h2>Estado de Mesas</h2>
-                    <div class="table-status">
-                        <p class="status-item">Mesa 1</p>
-                        <p class="status-item">2 personas - Terraza</p>
-                        <span class="status-display green">Disponible</span>
-                    </div>
-                    <div class="table-status">
-                        <p class="status-item">Mesa 2</p>
-                        <p class="status-item">4 personas - Interior</p>
-                        <span class="status-display orange">Reservada</span>
-                    </div>
-                    <div class="table-status">
-                        <p class="status-item">Mesa 3</p>
-                        <p class="status-item">6 personas - Terraza</p>
-                        <span class="status-display red">Ocupada</span>
-                    </div>
-                </div>
-                <div class="section-box quick-actions-container">
-                    <h2>Acciones Rápidas</h2>
-                    <button class="quick-action-btn">Nueva reserva</button>
-                    <button class="quick-action-btn">Gestionar Mesas</button>
-                    <button class="quick-action-btn">Configurar Horarios</button>
-                    <button class="quick-action-btn">Ver Clientes</button>
-                    <button class="quick-action-btn">Ver Reportes</button>
-                </div>
-            </section>
-        </main>
+<div class="admin-container">
+  <aside class="sidebar">
+    <div class="logo">
+      Reserva de Restaurante
     </div>
+    <nav class="main-nav">
+      <a [routerLink]="['/admin-dashboard']" class="nav-item">Dashboard</a>
+      <a [routerLink]="['/reservas']" class="nav-item">Reservas</a>
+      <a [routerLink]="['/mesas']" class="nav-item active">Mesas</a>
+      <a [routerLink]="['/clientes']" class="nav-item">Clientes</a>
+      <a [routerLink]="['/reportes']" class="nav-item">Reportes</a>
+      <a [routerLink]="['/configuracion']" class="nav-item">Configuración</a>
+    </nav>
+    <button class="logout-btn-admin" (click)="logout()">Cerrar sesion</button>
+  </aside>
+
+  <main class="main-content-admin">
+    <h1 class="page-title">Panel de Administración</h1>
+
+    <section class="stats-cards">
+      <div class="stat-card dark-blue">
+        <h3>RESERVAS DE HOY</h3>
+        <p>20</p>
+      </div>
+      <div class="stat-card green">
+        <h3>MESAS DISPONIBLES</h3>
+        <p>15/30</p>
+      </div>
+      <div class="stat-card orange">
+        <h3>RESERVAS PENDIENTES</h3>
+        <p>6</p>
+      </div>
+      <div class="stat-card light-blue">
+        <h3>OCUPACIÓN</h3>
+        <p>50%</p>
+      </div>
+    </section>
+
+    <div class="admin-dashboard-columns">
+      <div class="main-column">
+        <section class="section-box reservations-table">
+          <h2 class="section-header">Gestión de Reservas</h2>
+          <table>
+            <thead>
+              <tr>
+                <th>Hora</th>
+                <th>Cliente</th>
+                <th>Mesa</th>
+                <th>Personas</th>
+                <th>Estado</th>
+                <th>Acciones</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>5:00</td>
+                <td>María González</td>
+                <td>Mesa 3</td>
+                <td>4</td>
+                <td><span class="status-tag confirmed">Confirmado</span></td>
+                <td class="actions">
+                  <button class="action-btn edit">Editar</button>
+                  <button class="action-btn cancel">Cancelar</button>
+                </td>
+              </tr>
+              <tr>
+                <td colspan="5">-----------------------------------------------------------------------------------------------------------</td>
+                <td class="actions">
+                    <button class="action-btn edit">Editar</button>
+                    <button class="action-btn cancel">Cancelar</button>
+                  </td>
+              </tr>
+              <tr>
+                <td colspan="5">-----------------------------------------------------------------------------------------------------------</td>
+                <td class="actions">
+                    <button class="action-btn edit">Editar</button>
+                    <button class="action-btn cancel">Cancelar</button>
+                  </td>
+              </tr>
+              <tr>
+                <td colspan="5">-----------------------------------------------------------------------------------------------------------</td>
+                <td class="actions">
+                    <button class="action-btn edit">Editar</button>
+                    <button class="action-btn cancel">Cancelar</button>
+                  </td>
+              </tr>
+              <tr>
+                <td colspan="6">----------------------------------------------------------------------------------------------------------------------</td>
+                </tr>
+              <tr>
+                <td colspan="6">----------------------------------------------------------------------------------------------------------------------</td>
+                </tr>
+            </tbody>
+          </table>
+        </section>
+      </div>
+
+      <div class="side-column">
+        <section class="section-box table-status-container">
+          <h2 class="section-header">Estado de Mesas</h2>
+          <div class="table-status-item">
+            <div class="table-info">
+              <p><strong>Mesa 1</strong></p>
+              <p>2 personas - Terraza</p>
+            </div>
+            <span class="status-tag available">Disponible</span>
+          </div>
+          <div class="table-status-item">
+            <div class="table-info">
+              <p><strong>Mesa 2</strong></p>
+              <p>4 personas - Interior</p>
+            </div>
+            <span class="status-tag reserved">Reservada</span>
+          </div>
+          <div class="table-status-item">
+            <div class="table-info">
+              <p><strong>Mesa 3</strong></p>
+              <p>6 personas - Terraza</p>
+            </div>
+            <span class="status-tag occupied">Ocupada</span>
+          </div>
+          <div class="table-status-item">
+            <div class="table-info">
+              <p><strong>Mesa 4</strong></p>
+              <p>4 personas - Interior</p>
+            </div>
+            <span class="status-tag maintenance">Mantenimiento</span>
+          </div>
+        </section>
+
+        <section class="section-box quick-actions-container">
+          <h2 class="section-header">Acciones Rápidas</h2>
+          <button class="quick-action-btn">Nueva reserva</button>
+          <button class="quick-action-btn">Gestionar Mesas</button>
+          <button class="quick-action-btn">Configurar Horarios</button>
+          <button class="quick-action-btn">Ver Clientes</button>
+          <button class="quick-action-btn">Ver reportes</button>
+        </section>
+      </div>
+    </div>
+  </main>
 </div>
+<footer class.footer>
+    © 2025 Reserva de Restaurante. Todos los derechos reservados.
+</footer>

@@ -79,12 +79,3 @@ body {
     color: var(--text-color-light);
     margin-top: auto;
 }
-
-/* Ocultar secciones por defecto (en Angular, esto se maneja con el router) */
-.page {
-    display: none;
-}
-
-.page.active {
-    display: block;
-}

@@ -1,24 +1,28 @@
 /* Estilos del panel de cliente */
-.client-panel .main-content {
+.main-content {
     padding: 30px;
 }
 
-.client-panel .header {
+.header {
     box-shadow: none;
 }
 
-.client-panel .header-content {
-    justify-content: flex-end;
-    gap: 20px;
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
-.client-panel .logo {
-    margin-right: auto;
+.logo {
+    margin: 0;
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: var(--text-color-light);
 }
 
 .dashboard-sections {
     display: grid;
-    grid-template-columns: 2fr 1fr;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 20px;
 }
 
@@ -39,6 +43,11 @@
 .form-group input, .form-group select {
     background-color: var(--main-bg-color-light);
     color: var(--text-color-light);
+    width: 100%;
+    padding: 10px;
+    border: 1px solid var(--border-color-light);
+    border-radius: 5px;
+    box-sizing: border-box;
 }
 
 .action-button {
@@ -55,14 +64,26 @@
     color: white;
 }
 
+.action-button.primary:hover {
+    background-color: var(--button-hover-bg);
+}
+
 .action-button.secondary {
     background-color: #f39c12;
     color: white;
 }
 
+.action-button.secondary:hover {
+    background-color: #d68910;
+}
+
 .action-button.tertiary {
     background-color: #e74c3c;
     color: white;
+}
+
+.action-button.tertiary:hover {
+    background-color: #c0392b;
 }
 
 .my-reservations .reservation-card {
@@ -71,6 +92,13 @@
     border-radius: 8px;
     margin-bottom: 15px;
     background-color: var(--main-bg-color-light);
+}
+
+.card-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    margin-top: 15px;
 }
 
 .legend-item {
@@ -91,3 +119,18 @@
 .legend-color.orange { background-color: #e67e22; }
 .legend-color.blue { background-color: #55acee; }
 .legend-color.red { background-color: #e74c3c; }
+
+.logout-btn {
+    padding: 10px 20px;
+    background-color: #e74c3c;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.logout-btn:hover {
+    background-color: #c0392b;
+}

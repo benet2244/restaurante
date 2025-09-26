@@ -2,8 +2,7 @@
     <header class="header">
         <div class="header-content">
             <h1 class="logo">Reserva de Restaurante</h1>
-            <!-- El botón de Cerrar sesión ahora usa routerLink -->
-            <button class="logout-btn" [routerLink]="['/login']">Cerrar sesión</button>
+            <button class="logout-btn" (click)="logout()">Cerrar sesión</button>
         </div>
     </header>
     <main class="main-content">
@@ -30,7 +29,7 @@
                         <option value="terraza">Terraza</option>
                     </select>
                 </div>
-                <button class="action-button primary">Ver mesas disponibles</button>
+                <button class="action-button primary" (click)="verMesas()">Ver mesas disponibles</button>
             </section>
             <section class="section-box table-status-legend">
                 <h2>Estado de Mesas</h2>
@@ -58,8 +57,8 @@
                     <p>2025-09-02, 20:00 - 21:00</p>
                     <p>Mesa 4 (Interior) - 4 personas</p>
                     <div class="card-actions">
-                        <button class="action-button secondary">Modificar</button>
-                        <button class="action-button tertiary">Cancelar</button>
+                        <button class="action-button secondary" (click)="modificarReserva()">Modificar</button>
+                        <button class="action-button tertiary" (click)="cancelarReserva()">Cancelar</button>
                     </div>
                 </div>
             </section>
